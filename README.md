@@ -1,3 +1,3 @@
-# Hang man
+# Soldier Duty
 
-![workflow](soldier-duty.png)
+![workflow](soldier-duty.svg)

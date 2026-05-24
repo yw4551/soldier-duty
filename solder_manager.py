@@ -1,3 +1,6 @@
+from data import data
+
+
 def add_solder(id: int, name: str) -> None:
     """
     Adds a soldier to the system

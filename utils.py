@@ -1,4 +1,7 @@
-def find_soldier(id: int) -> dict:
+from data import data, duty_types
+
+
+def find_soldier_by_id(id: int) -> dict | None:
     """
     Gets the soldiers dict from the data
 
@@ -11,7 +14,10 @@ def find_soldier(id: int) -> dict:
     errors:
     None
     """
-    pass
+    for solder in data:
+        if solder["id"] == id:
+            return solder
+    raise KeyError("The soldier is not in the system")
 
 
 def is_valid_day(day: str) -> bool:
@@ -27,7 +33,9 @@ def is_valid_day(day: str) -> bool:
     errors:
     None
     """
-    pass
+    days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"]
+
+    return day.title() in days
 
 
 def is_status_valid(status: str) -> bool:
@@ -43,4 +51,25 @@ def is_status_valid(status: str) -> bool:
     errors:
     None
     """
-    pass
+    statuses = ["pending", "completed", "missed"]
+
+    return status in statuses
+
+
+def is_valid_duty_name(name: str) -> bool:
+    """
+    Validates the duty name
+
+    input:
+    duty_name
+
+    output:
+    True is valid else False
+
+    errors:
+    None
+    """
+    return name in duty_types
+
+
+print(is_valid_duty_name("Gate guard"))

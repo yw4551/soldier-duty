@@ -94,6 +94,14 @@ def handle_soldier_duty():
     pass
 
 
+def show_menu():
+    pass
+
+
+def get_user_choice():
+    pass
+
+
 def main():
     pass
 
