@@ -38,7 +38,7 @@ def is_valid_day(day: str) -> bool:
     return day.title() in days
 
 
-def is_status_valid(status: str) -> bool:
+def is_valid_status(status: str) -> bool:
     """
     Validates the status
 
@@ -105,3 +105,17 @@ def is_unique_id(soldier_id: int) -> bool:
         if soldier["id"] == soldier_id:
             return False
     return True
+
+
+def solider_has_duty(solider_dict: dict, duty_name: str) -> bool:
+    """
+    validates the soldier doesn't have this duty already
+
+    inputs:
+    solider_dict
+    duty_name
+
+    output:
+    True if solider has duty already else False
+    """
+    pass
