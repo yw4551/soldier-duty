@@ -17,7 +17,7 @@ def find_soldier_by_id(id: int) -> dict | None:
     for solider in data:
         if solider["id"] == id:
             return solider
-    raise KeyError("The soldier is not in the system")
+    return None
 
 
 def is_valid_day(day: str) -> bool:
@@ -85,7 +85,7 @@ def is_valid_soldier_name(solider_name: str) -> bool:
     errors:
     None
     """
-    return solider_name == ""
+    return solider_name != ""
 
 
 def is_unique_id(soldier_id: int) -> bool:
@@ -118,4 +118,7 @@ def solider_has_duty(solider_dict: dict, duty_name: str) -> bool:
     output:
     True if solider has duty already else False
     """
-    pass
+    for duty in solider_dict["duties"]:
+        if duty["name"] == duty_name:
+            return True
+    return False

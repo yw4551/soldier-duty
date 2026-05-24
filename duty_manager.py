@@ -1,4 +1,4 @@
-from utils import find_soldier_by_id, is_valid_day, is_valid_status
+from utils import find_soldier_by_id, is_valid_day, is_valid_status, solider_has_duty
 from data import data
 
 
@@ -27,7 +27,7 @@ def add_duty(soldier_id: int, duty_name: str, day: str, status: str) -> None:
         raise KeyError("Soldier ID not found!")
     elif not is_valid_day(day):
         raise ValueError("You can't add a duty on Friday or Saturday!")
-    elif any(duty["name"] == duty_name for duty in soldier["duties"]):
+    elif solider_has_duty(soldier, duty_name):
         raise ValueError("Soldier is booked for this duty already!")
     elif not is_valid_status(status):
         raise ValueError("Status is invalid!")
@@ -85,8 +85,3 @@ def get_soldier_duties(solider_id: int) -> list:
         raise KeyError("Solider not found!")
 
     return solider["duties"]
-
-
-print(get_soldier_duties(12345))
-update_duty_status(12345, "Test", "completed")
-print(get_soldier_duties(12345))

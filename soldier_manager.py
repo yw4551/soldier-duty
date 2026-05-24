@@ -18,7 +18,7 @@ def add_solder(solider_id: int, solider_name: str) -> None:
     """
     if not is_unique_id(solider_id):
         raise ValueError("You must have a unique ID!")
-    elif is_valid_soldier_name(solider_name):
+    elif not is_valid_soldier_name(solider_name):
         raise ValueError("Soldier name can't be empty!")
     data.append({"id": solider_id, "name": solider_name, "duties": []})
 
