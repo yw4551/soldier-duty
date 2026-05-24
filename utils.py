@@ -14,9 +14,9 @@ def find_soldier_by_id(id: int) -> dict | None:
     errors:
     None
     """
-    for solder in data:
-        if solder["id"] == id:
-            return solder
+    for solider in data:
+        if solider["id"] == id:
+            return solider
     raise KeyError("The soldier is not in the system")
 
 
@@ -72,4 +72,36 @@ def is_valid_duty_name(name: str) -> bool:
     return name in duty_types
 
 
-print(is_valid_duty_name("Gate guard"))
+def is_valid_soldier_name(solider_name: str) -> bool:
+    """
+    Validates the name is not empty
+
+    input:
+    solider_name
+
+    output:
+    True if solider_name is empty else False
+
+    errors:
+    None
+    """
+    return solider_name == ""
+
+
+def is_unique_id(soldier_id: int) -> bool:
+    """
+    Validates the soldier_id is unique
+
+    input:
+    solider_id
+
+    output:
+    False if solider_id not unique else False
+
+    errors:
+    None
+    """
+    for soldier in data:
+        if soldier["id"] == soldier_id:
+            return False
+    return True

@@ -1,7 +1,8 @@
 from data import data
+from utils import is_valid_soldier_name, is_unique_id, find_soldier_by_id
 
 
-def add_solder(id: int, name: str) -> None:
+def add_solder(solider_id: int, solider_name: str) -> None:
     """
     Adds a soldier to the system
 
@@ -15,10 +16,14 @@ def add_solder(id: int, name: str) -> None:
     errors:
     ValueError if ID used already in system or empty name
     """
-    pass
+    if not is_unique_id(solider_id):
+        raise ValueError("You must have a unique ID!")
+    elif is_valid_soldier_name(solider_name):
+        raise ValueError("Soldier name can't be empty!")
+    data.append({"id": solider_id, "name": solider_name, "duties": []})
 
 
-def remove_soldier(id) -> None:
+def remove_soldier(solider_id) -> None:
     """
     Removes a soldier from the system
 
@@ -31,7 +36,13 @@ def remove_soldier(id) -> None:
     errors:
     KeyError if ID not is system
     """
-    pass
+    if not find_soldier_by_id(solider_id):
+        raise KeyError("Solider not find.")
+
+    for index, soldier in enumerate(data):
+        if soldier["id"] == solider_id:
+            del data[index]
+            return
 
 
 def view_all_soldiers() -> None:
@@ -47,4 +58,5 @@ def view_all_soldiers() -> None:
     errors:
     None
     """
-    pass
+    for soldier in data:
+        print(soldier)
